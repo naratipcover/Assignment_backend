@@ -7,16 +7,10 @@ class StudentSchema extends Schema {
   up () {
     this.create('students', (table) => {
       table.increments('id')
-      table.string('name', 30)
-      table.string('surname', 30)
-      table.integer('university_id').unsigned()
+      table.string('name', 30).notNullable()     
+      table.string('surname', 30).notNullable()  
       table.timestamps()
 
-      table
-        .foreign('university_id')
-        .references('universities.id')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
     })
   }
 
