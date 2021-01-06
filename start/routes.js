@@ -24,4 +24,5 @@ Route.group(() => {
     Route.post('/university', 'UniversityController.store')
     Route.put('/university/:id', 'UniversityController.update')
     Route.patch( '/university/:id', 'UniversityController.update')
+    Route.delete('/university/:id', 'UniversityController.destroy')
   }).prefix('api/v1')

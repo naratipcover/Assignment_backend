@@ -34,8 +34,15 @@ class UniversityController {
         const {id} = request.params
         const data = request.body
         const Universities = await University.query().where('id', id).update(data)
+        console.log(Universities)
         return {status: 200, error: undefined, data: Universities}
     }
+    async destroy ({request}) {
+        const {id}  = request.params
+        const Universities = await University.query().where('id', id).delete()
+        return {status: '200 deleted successful'}
+    }
+    
 }
 
 module.exports = UniversityController
