@@ -21,4 +21,7 @@ Route.on('/').render('welcome')
 Route.group(() => {
     Route.get('/university', 'UniversityController.index')
     Route.get('/university/:id', 'UniversityController.show')
+    Route.post('/university', 'UniversityController.store')
+    Route.put('/university/:id', 'UniversityController.update')
+    Route.patch( '/university/:id', 'UniversityController.update')
   }).prefix('api/v1')
