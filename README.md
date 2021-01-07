@@ -1,11 +1,11 @@
-> kk
-
- BEFORE
+#### RESPONSE
     "status": 200,
-    "data": {
-        "first_name": "John",
-        "last_name": "Doe",
-        "created_at": "null",
-        "updated_at": "null",
-        "id": 1
-    }
+    "data": [
+        {
+            "id": 1,
+            "short_name": "HW",
+            "last_name": "Hogwarts",
+            "created_at": null,
+            "updated_at": null
+        }
+    ]
