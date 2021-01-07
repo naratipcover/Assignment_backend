@@ -4,16 +4,14 @@
 const Model = use('Model')
 
 class StudentUniversity extends Model {
-    static get primaryKey () {
-        return 'id'
-    }
-    students () {
-        return this.belongsTo('App/Models/Student')
-    }
+//  
+    // students () {
+    //     return this.hasOne('App/Models/Student')
+    // }
 
-    universities () {
-        return this.belongsTo('App/Models/University')
-    }
+    // universities () {
+    //     return this.hasOne('App/Models/University')
+    // }
 }
 
 module.exports = StudentUniversity
