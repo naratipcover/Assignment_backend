@@ -7,8 +7,8 @@ class StudentSchema extends Schema {
   up () {
     this.create('students', (table) => {
       table.increments('id')
-      table.string('name', 30).notNullable()     
-      table.string('surname', 30).notNullable()  
+      table.string('first_name', 30).notNullable()     
+      table.string('last_name', 30).notNullable()  
       table.timestamps()
 
     })
