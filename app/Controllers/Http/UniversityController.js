@@ -11,7 +11,7 @@ class UniversityController {
 
     async show ({request}){
         const { id } = request.params
-        const universities = await University.query().where('id', id).fetch()
+        const universities = await University.query().with('students').where({id:id}).fetch()
         return {status: 200, error: undefined, data: universities}
     }
 
@@ -24,7 +24,7 @@ class UniversityController {
     async update ({request}) {
         const {id} = request.params
         const data = request.body
-        const universities = await University.query().where('id', id).update(data)
+        await University.query().where('id', id).update(data)
         const uni = await University.query().where('id', id).fetch()
         return {status: 200, error: undefined, data: uni}
     }
