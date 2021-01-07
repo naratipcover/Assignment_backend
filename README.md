@@ -1,8 +1,224 @@
+# Example API of student and university
+
+## Example Student
+
+### Show every students
+
+#### REQUEST 
+    medthod: GET api/v1/student
+#### RESPONSE
+    "status": 200,
+    "data": [
+        {
+            "id": 1,
+            "first_name": "Hon",
+            "last_name": "Suoo",
+            "created_at": "2021-01-07 18:16:49",
+            "updated_at": "2021-01-07 18:16:49"
+        },
+         {
+            "id": 2,
+            "first_name": "Nara",
+            "last_name": "Supa",
+            "created_at": "2021-01-07 18:17:28",
+            "updated_at": "2021-01-07 18:17:28"
+        }
+     ]
+    
+### Show student by id
+
 #### REQUEST
-    medthod: POST api/:version/university
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringsify({
-      short_name: "HW",
-      full_name: "Hogwarts",
-      university_name: "Hogwarts"
-    })
+    medthod: GET api/v1/student/:id
+    
+#### RESPONSE
+    "Student": 200,
+    "data": [
+        {
+            "id": 2,
+            "first_name": "Nara",
+            "last_name": "Supa",
+            "created_at": "2021-01-07 18:17:28",
+            "updated_at": "2021-01-07 18:17:28",
+            "university": [
+                {
+                    "id": 2,
+                    "name_university": "CMU",
+                    "education_level": "ป.โท",
+                    "created_at": "2021-01-07 15:34:17",
+                    "updated_at": "2021-01-07 15:34:17",
+                    "pivot": {
+                        "university_id": 2,
+                        "student_id": 2
+                    }
+                }
+            ]
+        }
+    ]
+    
+### Create student infomation requirement
+
+#### REQUEST
+    medthod: POST api/v1/student
+    
+ ##### Store raw data
+    {
+      "first_name" : "Jon",
+      "last_name" : "Sun",
+      "name_university" : "CMU",
+      "education_level" : "ป.ตรี"
+    }
+    
+#### RESPONSE
+    {
+      "status": 200,
+      "data": {
+          "first_name": "Jon",
+          "last_name": "Sun",
+          "created_at": "2021-01-08 00:25:51",
+          "updated_at": "2021-01-08 00:25:51",
+          "id": 3
+      }
+    }
+    
+### Update student infomation
+
+#### REQUEST
+    medthod: PUT api/v1/student/:id
+    
+ ##### Store raw data
+    {
+      "first_name" : "PP",
+      "last_name" : "JJ",
+    }
+    
+#### RESPONSE
+
+    "status": 200,
+    "data": [
+        {
+            "id": 3,
+            "first_name": "PP",
+            "last_name": "JJ",
+            "created_at": "2021-01-07 18:17:46",
+            "updated_at": "2021-01-08 00:43:43"
+        }
+    ]
+   
+### Delete student infomation by id
+#### REQUEST
+    medthod: DELETE api/v1/student/:id
+#### RESPONSE 
+    
+    "status": "200 deleted successful"
+
+
+## Example University
+
+## Show every students
+
+#### REQUEST 
+    medthod: GET api/v1/student
+#### RESPONSE
+    "status": 200,
+    "data": [
+        {
+            "id": 1,
+            "name_university": "CMU",
+            "education_level": "ป.โท",
+            "created_at": "2021-01-07 18:16:49",
+            "updated_at": "2021-01-07 18:16:49"
+        },
+         {
+            "id": 2,
+            "first_name": "SPU",
+            "last_name": "ป.ตรี",
+            "created_at": "2021-01-07 18:17:28",
+            "updated_at": "2021-01-07 18:17:28"
+        }
+     ]
+    
+### Show student by id
+
+#### REQUEST
+    medthod: GET api/v1/student/:id
+    
+#### RESPONSE
+    "Student": 200,
+    "data": [
+        {
+            "id": 2,
+            "first_name": "Nara",
+            "last_name": "Supa",
+            "created_at": "2021-01-07 18:17:28",
+            "updated_at": "2021-01-07 18:17:28",
+            "university": [
+                {
+                    "id": 2,
+                    "name_university": "CMU",
+                    "education_level": "ป.โท",
+                    "created_at": "2021-01-07 15:34:17",
+                    "updated_at": "2021-01-07 15:34:17",
+                    "pivot": {
+                        "university_id": 2,
+                        "student_id": 2
+                    }
+                }
+            ]
+        }
+    ]
+    
+### Create student infomation requirement
+
+#### REQUEST
+    medthod: POST api/v1/student
+    
+ ##### Store raw data
+    {
+      "first_name" : "Jon",
+      "last_name" : "Sun",
+      "name_university" : "CMU",
+      "education_level" : "ป.ตรี"
+    }
+    
+#### RESPONSE
+    {
+      "status": 200,
+      "data": {
+          "first_name": "Jon",
+          "last_name": "Sun",
+          "created_at": "2021-01-08 00:25:51",
+          "updated_at": "2021-01-08 00:25:51",
+          "id": 3
+      }
+    }
+    
+### Update student infomation
+
+#### REQUEST
+    medthod: PUT api/v1/student/:id
+    
+ ##### Store raw data
+    {
+      "first_name" : "PP",
+      "last_name" : "JJ",
+    }
+    
+#### RESPONSE
+
+    "status": 200,
+    "data": [
+        {
+            "id": 3,
+            "first_name": "PP",
+            "last_name": "JJ",
+            "created_at": "2021-01-07 18:17:46",
+            "updated_at": "2021-01-08 00:43:43"
+        }
+    ]
+   
+### Delete student infomation by id
+#### REQUEST
+    medthod: DELETE api/v1/student/:id
+#### RESPONSE 
+    
+    "status": "200 deleted successful"
