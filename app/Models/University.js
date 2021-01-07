@@ -7,8 +7,8 @@ class University extends Model {
     static get primaryKey () {
         return 'id'
     }
-    studentUniversity () {
-        return this.belongsToMany('App/Models/StudentUniversity').pivotTable('student_universities')
+    students () {
+        return this.belongsToMany('App/Models/Student').pivotTable('student_universities')
     }
 }
 
