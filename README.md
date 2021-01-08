@@ -1,4 +1,32 @@
-# Example API of student and university
+# Assignment API of student and university
+
+## About to Assignment
+ API use for university/student. Universities can have student more than 1 people and Students can have unversity more than 1 university.
+ 
+### Example 
+
+* Student A study B.A. at KMUTT and ที่ M.A. at KU
+* Student B Studet B.A. degree at CU and M.A. at KU
+
+## Built With
+
+### ใช้ Framework Adonis JS
+    https://adonisjs.com/
+
+### Use data with MariaDB
+
+### Prerequisites
+
+Please install the following:
+* Adonis JS
+* Docker
+
+### Run with serve adonis js
+    adonis serve --dev
+
+### Run with Docker
+    docker compose up -d
+
 
 ## Example Student
 
