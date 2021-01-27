@@ -1,8 +1,8 @@
 'use strict'
-
     const Student = use('App/Models/Student')
     const University = use('App/Models/University')
     const StudentUniversity = use('App/Models/StudentUniversity')
+    const StudentValidator = require('../../../service/StudentValidator')
 
 class StudentController {
 
@@ -19,6 +19,12 @@ class StudentController {
 
     async store ({request}){
         const {first_name, last_name,name_university,education_level} = request.body
+
+        const  validatorData = await StudentValidator(request.body)
+
+        if (validatorData.error)
+        return {status: 422, error: validatorData.error, data: undefined}
+
         const students = await Student.create({first_name, last_name})
         const universityData = await University.query().where({name_university, education_level}).fetch().then(response => JSON.parse(JSON.stringify(response)))
         const testUniversity = universityData.map(item => item.id)
@@ -39,8 +45,14 @@ class StudentController {
 
     async destroy ({request}) {
         const {id} = request.params
-        await Student.query().where('id', id).delete()
-        return {status: '200 deleted successful'}
+        const student = await Student.query().where('id', id).delete()
+        
+        if(student) {
+            return {status: 200 , error: undefined, data: { massage: ' delete success' }}
+        }
+        else {
+            return {status: 200 , error: undefined, data: { massage: ` path ${id}  not found` }}
+        }
 
     }
 

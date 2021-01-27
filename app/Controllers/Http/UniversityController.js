@@ -1,6 +1,7 @@
 'use strict'
 
 const University = use('App/Models/University')
+const UniversityValidator = require('../../../service/UniversityValidator')
 
 class UniversityController {
 
@@ -17,6 +18,11 @@ class UniversityController {
 
     async store ({request}){
         const data = request.body
+
+        const  validatorData = await UniversityValidator(request.body)
+        if (validatorData.error)
+        return {status: 422, error: validatorData.error, data: undefined}
+
         const  universities = await University.create(data)
         return {status: 200, error:undefined, data: universities}
     }
@@ -31,10 +37,16 @@ class UniversityController {
 
     async destroy ({request}) {
         const {id}  = request.params
-        await University.query().where('id', id).delete()
-        return {status: '200 deleted successful'}
+        const universities = await University.query().where('id', id).delete()
+   
+        if(universities) {
+            return {status: 200 , error: undefined, data: { massage: ' delete success' }}
+        }
+        else {
+            return {status: 200 , error: undefined, data: { massage: ` path ${id}  not found` }}
+        }
     }
-    
 }
+    
 
 module.exports = UniversityController
